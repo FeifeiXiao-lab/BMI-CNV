@@ -10,3 +10,27 @@ We developed BMI-CNV, a Bayesian Multi-sample and Integrative CNV (BMI-CNV) prof
 Our method mainly focuses on CNV detection by integrating the SNP array and WES data, although it can also be naturally applied to the WES data only situation. Fig 1 shows an overview of the framework of BMI-CNV. First, WES read counts and SNP array intensities are integrated using a series of data integration procedures, including normalization, standardization, and merging. Our main algorithm consists of two main stages: Stage I uses a Bayesian PSBP method  coupled with a Gaussian mixture model-based initial data filtering to identify shared CNV regions, and Stage II as the individual CNV calling procedure. 
 
 ![workflow](Fig1.jpg)
+
+## Step 1: Data processing and normalization 
+### Getting raw read count data
+Using samtools (follow EXCAVATOR2's mannual), this requires linux enviroment (e.g., ubuntu OS).
+```r
+EXCAVATOR2> perl EXCAVATORDataPrepare.pl ExperimentalFilePrepare.w50000.txt processors 6 --target MyTarget_w50000 --assembly hg19
+```
+Using Rsamtools (follow CODEX2'S manual http://htmlpreview.github.io/?https://github.com/yuchaojiang/CODEX2/blob/master/demo/CODEX2.html)
+
+Example output
+```r
+> Y_qc[1:5,1:5]
+                  NA06994 NA07000 NA07056 NA07357 NA10847
+1:2938187-2939417    1093     831     541     767    1072
+1:3102653-3103043     152     356     136     291     160
+1:3160585-3160735      82      63      33      90      90
+1:3301632-3301902     264     227     157     181     245
+1:3327905-3329375     969     962     405     655     867
+```
+### Normalization
+The default normalization method for **CORRseq** is EXCAVATOR2 median normalization, the following procedure generate **log2R-MED** for each testing sample.
+```r
+EXCAVATOR2> perl EXCAVATORDataAnalysis.pl ExperimentalFileAnalysis.w50K.txt --processors 6 --target MyTarget_w50K --assembly hg19 --output /.../OutEXCAVATOR2/Results_MyProject_w50K --mode ...
+```
