@@ -82,6 +82,12 @@ Output
 write.table(cluster,file=file,row.names = FALSE,quote = FALSE,col.names = F,sep="\t")
 write.table(LRR,file=file2,row.names = FALSE,quote = FALSE,col.names = F,sep="\t")
 ```
+### Step 5: BMI-CNV calling (MATLAB)
+```r
 
+writematrix(Stout, 'stout.txt');
+writematrix(thetalout, 'thetalout.txt');
+writematrix(taulout, 'taulout.txt');
+```
 
 
