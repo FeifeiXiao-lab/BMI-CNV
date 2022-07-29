@@ -1,4 +1,6 @@
- % load dataset n:number of loci g:number of repeated samples
+function [Stout,thetalout,taulout]=BMI_CNV(file1,file2,nsim,nburn)
+
+% load dataset n:number of loci g:number of repeated samples
 dt=load('D:\tricl_integration\data_allsnp\lrr_6.txt');
 cluster=load('D:\tricl_integration\data_allsnp\cluster_6.txt');
 n=size(dt,2);
@@ -14,10 +16,10 @@ delta0=0;
 
 
 %--------MCMC parameters
-nsim = 400;  
+nsim = nsim;  
 ncur = 1;     
 nrun = 100-1;
-burn = 200;
+burn = nburn;
 
 %--------initialize parameters
 K=5;
@@ -255,6 +257,3 @@ for gt=1:nsim
     
 end
 
-writematrix(Stout, 'D:\Desktop\stoutchr6.txt');
-writematrix(thetalout, 'D:\Desktop\thetaloutchr6.txt');
-writematrix(taulout, 'D:\Desktop\tauloutchr6.txt');
