@@ -84,10 +84,12 @@ write.table(LRR,file=file2,row.names = FALSE,quote = FALSE,col.names = F,sep="\t
 ```
 ### Step 5: BMI-CNV calling (MATLAB)
 ```r
-
+[Stout,thetalout,taulout]=BMI_CNV(file1,file2,nsim,nburn)
 writematrix(Stout, 'stout.txt');
 writematrix(thetalout, 'thetalout.txt');
 writematrix(taulout, 'taulout.txt');
 ```
-
+1. stout: CNV status results.
+2. thetaout: mean for each status.
+3. taulout: precision for each status.
 
