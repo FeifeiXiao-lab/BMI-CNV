@@ -63,9 +63,13 @@ list: txt file documented all the individual LRR file (PennCNV can only process 
 data=BMI_CNV_PROCESSING(snpdata,snpmap,wesdata,wesmap,nsample)
 ```
 snpdata: GC-adjusted LRR form step 3.
+
 snpmap: SNP location file.
+
 wesdata: normalized log2R for step 2.
+
 wesmap: BED file for WES.
+
 nsample: number of samples.
 
 ##output
